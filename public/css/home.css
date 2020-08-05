@@ -1,0 +1,567 @@
+.footer {
+    margin-top: 15px;
+    background: #03a697;
+    padding: 30px 0px;
+}
+p.url a, p.email a, .copyright a {
+    color: #fff;
+}
+.ft-info h3 {
+    font-size: 20px;
+    font-family: "RobotobB",serif;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.ft-info .address {
+
+    background-position: 0px 2px;
+    background-repeat: no-repeat;
+}
+.ft-info .phone {
+
+    background-position: 0px 5px;
+    background-repeat: no-repeat;
+    font-weight: bold;
+}
+#carouselExampleControls{
+    margin-top: 70px;
+}
+.dropdown-menu{
+    margin-left: 500px;
+    margin-right: 500px;
+}
+/*.d-block w-100{*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    left: 0px;*/
+/*    top: 0px*/
+/*}*/
+.a-service-title .service-category {
+    padding: 6px 12px;
+    text-align: center;
+    border-radius: 0px;
+    border: 2px solid rgb(240, 84, 45);
+    margin-right: 10px;
+    height: 40px;
+    width: 50px;
+}
+.main-title h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.a-service-img img {
+    width: 100%;
+    height: 100%;
+}
+.a-service-desc p {
+    font-size: 16px;
+    font-family: "Roboto", serif;
+    color: rgb(102, 102, 102);
+    text-align: left;
+}
+.viewmore {
+    display: block;
+    text-align: right;
+    padding: 10px 0px;
+    font-size: 16px;
+    font-family: "Roboto", serif;
+    color: rgb(211, 87, 1);
+}
+.feature_customer {
+    background-image: url(https://vnptproject.blob.core.windows.net/imagecontainer/featured-customers.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 0px;
+    display: block;
+}
+.a-customer a {
+    display: block;
+    padding: 10px;
+    border-left: 3px solid #f0542d;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    font-family: "Roboto", serif;
+    color: rgb(2, 55, 54);
+    text-align: left;
+}
+a, a:hover {
+    text-decoration: none !important;
+    background-color: transparent;
+}
+.service-name {
+    font-size: 20px;
+    font-family: "RobotobB",sans-serif;
+    color: #025951;
+    text-transform: uppercase;
+    text-align: center;
+}
+.testimonialbox {
+    margin-top: 30px;
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+
+    @media (min-width: 992px) {
+        .container {
+            width: 970px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+    }
+}
+.testimonialbox .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.abcd {
+    position: relative;
+}
+#owl-demo2 {
+    margin-top: 30px;
+}
+.owl-carousel .owl-wrapper-outer {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.owl-carousel .owl-item {
+    float: left;
+}
+.owl-item .item {
+    padding: 15px;
+}
+.client-say-wrap>a {
+    min-height: 258px;
+}
+.testimonials-first {
+    background-color: #f6f6f6;
+    position: relative;
+    padding: 29px;
+    margin-bottom: 10px;
+    min-height: 240px;
+    display: block;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.testimonials-first .image-holder {
+    border-right: 1px solid #f25549;
+    position: relative;
+    width: 61px;
+    margin-right: 16px;
+    float: left;
+    z-index: 30;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.image-holder img {
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+.testimonials-first .name {
+    color: #26455f;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 2px;
+    margin-bottom: 14px;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+h3, p {
+    margin: 0px;
+    padding: 0px;
+}
+.testimonials-first .organization {
+    color: #f25549;
+    font-weight: 300;
+    font-size: 13px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    padding-left: 80px;
+}
+.testimonials-first .message {
+    color: #58646e;
+    margin-top: 26px;
+    font-style: italic;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.btn.next1, .btn.prev1 {
+    display: none;
+    box-shadow: none !important;
+    background: transparent !important;
+    border: 0px !important;
+    outline: 0px !important;
+}
+.btn.prev1 {
+    position: absolute;
+    top: 45%;
+    left: -40px;
+    padding: 10px !important;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px;
+    font-size: 18px;
+}
+
+.social a {
+    font-size: 20px;
+    font-family: "FontAwesome",serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    /* margin-right: 15px; */
+    /*margin-left: 15px;*/
+    border: 1px solid #fff;
+    padding: 8px 11px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 45px;
+}
+.ft-info p {
+    font-size: 16px;
+    font-family: "Roboto",serif;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+.featured-news {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.slideInUp {
+    -webkit-animation-name: slideInUp;
+    animation-name: slideInUp;
+}
+.owl-item .a-news {
+    background: transparent !important;
+    padding: 0px !important;
+}
+.a-news-img {
+    padding: 5px;
+    border: 1px solid #cccccc;
+}
+.a-news-img-inside {
+    overflow: hidden;
+}
+.a-news-img img {
+    width: 100%;
+}
+.a-news-img img {
+    width: 100%;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.a-news-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.a-news-title a {
+    font-size: 16px;
+    font-family: "RobotobB",serif;
+    color: rgb(2, 89, 81);
+    text-transform: uppercase;
+    text-align: left;
+}
+.a-news-desc p {
+    font-size: 16px;
+    font-family: "Roboto", serif;
+    color: rgb(102, 102, 102);
+    text-align: left;
+}
+btn.next, .btn.prev {
+    opacity: 0;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.btn.prev {
+    position: absolute;
+    top: 45%;
+    left: -40px;
+    padding: 10px !important;
+    background: #1c887e;
+    border-radius: 0px;
+    color: #fff;
+    font-size: 18px;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.owl-theme .owl-controls {
+    margin-top: 10px;
+    text-align: center;
+}
+.owl-controls {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.owl-controls {
+    display: none !important;
+}
+.owl-carousel .owl-wrapper, .owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+}
+.owl-carousel .owl-item {
+    float: left;
+}
+.banner-breadcrumb {
+    position: relative;
+    text-align: center;
+    padding: 65px;
+    background: url(https://vnptproject.blob.core.windows.net/imagecontainer/banner-services.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+    height: 215px;
+}
+
+.banner-breadcrumb>a, .banner-breadcrumb>a:hover {
+    font-size: 35px;
+    font-family: "RobotobB";
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+}
+.nav-tabs {
+    border-bottom: 1px solid #ddd;
+}
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+ul {
+    margin: 0px;
+}
+ul, li, ol {
+    padding: 0px;
+}
+.single li {
+    list-style: inherit !important;
+}
+.single em, .single li {
+    font-size: 16px;
+    color: rgb(102, 102, 102);
+}
+.nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+}
+.nav>li {
+    position: relative;
+    display: block;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.panel-group .panel-heading {
+    border-bottom: 0;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.collapse.in {
+    display: block;
+}
+.wpcf7-form .wpcf7-submit.btn {
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    outline: 0px !important;
+    background: rgb(28, 136, 126) !important;
+    border: 1px solid rgb(28, 136, 126) !important;
+    color: #fff;
+    font-family: "RobotobB";
+    font-size: 18px !important;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+textarea.form-control {
+    height: auto;
+}
+.sidebar-content {
+    margin-bottom: 30px;
+}
+.sb-contact {
+    border: 1px solid #cccccc;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.sb-contact img.big {
+    width: 100%;
+}
+img {
+    vertical-align: middle;
+}
+.sb-contact .hotline {
+    font-size: 27px;
+    font-family: "RobotobB";
+    color: rgb(240, 84, 51);
+    text-align: center;
+    padding: 0px;
+}
+.sb-contact p {
+    font-size: 16px;
+    font-family: "Roboto";
+    color: #666666;
+    text-align: left;
+    padding: 5px 15px;
+}
+ul {
+    margin: 0px;
+}
+ul, li, ol {
+    padding: 0px;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+ul {
+    list-style: disc;
+}
+.other-services1 h4 {
+    font-size: 20px;
+    font-family: "RobotobB",serif;
+    color: rgb(28, 136, 126);
+    text-transform: uppercase;
+    text-align: left;
+    padding: 15px 0px;
+    border-bottom: 1px solid #1c887e;
+    margin-bottom: 10px;
+}
+.other-services {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.other-services {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.outside-border {
+    padding-top: 5px;
+    border: 1px solid #cccccc;
+}
+.inside-border {
+    border-top: 1px solid #cccccc;
+}
+.sb-service {
+    padding: 15px;
+}
+.other-title>a, .other-title>a:hover {
+    float: left;
+    margin-top: 7px;
+}
+.other-title>p {
+    font-size: 18px;
+    font-family: "RobotobB";
+    color: rgb(2, 89, 81);
+    text-transform: uppercase;
+}
+.other-services .other-content {
+    margin-top: 5px;
+}
+

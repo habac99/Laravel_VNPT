@@ -1,0 +1,65 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::group(['prefix'=>'service'],function (){
+    Route::get('/{name}', 'ServiceController@getService' )->name('get_service');
+    Route::post('/request', 'ServiceController@request_service')->name('request_service');
+
+});
+Route::group(['prefix'=>'services'],function (){
+    Route::get('/{name}', 'ServiceController@ServiceType')->name('service_type');
+
+
+});
+
+Route::get('file','FileController@index');
+Route::post('file','Filecontroller@doUpload')->name('upload');
+
+Route::get('/admin/login', 'AdminController@getLogin')->name('AdminLogin')->middleware('checkLogin');
+Route::post('/admin/login', 'AdminController@postLogin')->name('PostLogin')->middleware('checkLogin');
+
+Route::get('/test','HomeController@test')->name('test');
+Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
+
+    Route::get('/', 'AdminController@Home')->name('AdminHome');
+    Route::get('/full-dashboard', 'AdminController@SuperAdmin')->name('superAdmin');
+    Route::group(['prefix'=>'add'], function(){
+
+    });
+    Route::group(['prefix'=>'edit'], function(){
+
+    });
+    Route::group(['prefix'=>'delete'], function(){
+
+    });
+    Route::group(['prefix'=>'view'], function(){
+
+    });
+});
+Route::get('/testckeditor',function (){
+    return view('testckeditor');
+});
+Route::post('/testckeditor','FileController@ckeditor')->name('ckeditor');
+Route::post('/testckeditor/save','FileController@ckeditor_save')->name('ckeditor_save');
+Route::group(['prefix'=>'add'], function(){
+
+});
