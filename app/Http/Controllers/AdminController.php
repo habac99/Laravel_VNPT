@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -43,5 +45,60 @@ class AdminController extends Controller
         }
 
     }
+    public function serviceIndex(){
+        $data['service_type'] = DB::table('services')->where('type','=',2)->get();
+        return view('admin.services');
+    }
+    public function getService(){
+        $data['services'] = DB::table('sub_services')->get();
+        echo json_encode($data);
+        exit;
+    }
+    public function addService(Request $request){
+//        if($request->file!= null){
+//            return json_encode(array(
+//                "statusCode" => 202
+//            ));
+//        }
+        if($request->service_id != null && $request->service_name != null && $request->short_description != null && $request->full_description != null) {
+            $file = $request->fileUpload;
+            $storagePath =  Storage::disk('azure')->putFileAs('/',$file,$file->getClientOriginalName());
+            $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+            DB::table('sub_services')->insert([
+                'service_id' => $request->service_id,
+                'service_name' => $request->service_name,
+                'logo' => $url,
+                'image_link' => $url,
+                'short_description' => $request->short_description,
+                'full_description' => $request->full_description,
+                'alt_name' => 'dich-vu-it',
+                'type' => 1,
+                'created_at' => Carbon::now()->format('d-m-y H:i:s'),
+                'updated_at' => Carbon::now()->format('d-m-y H:i:s'),
+            ]);
+            return json_encode(array(
+                "statusCode" => 200
+            ));
+        }else {
+            return json_encode(array(
+                "statusCode" => 201
+            ));
+        }
+
+
+    }
+    public function removeService(Request $request){
+        DB::table('sub_services')->where('id','=',$request->id)->delete();
+        return json_encode(array(
+            "statusCode"=>200
+        ));
+    }
+    public function logout(){
+
+        Auth::logout();
+        return redirect()->intended('/admin');
+    }
+
+
 
 }

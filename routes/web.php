@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,19 +37,24 @@ Route::post('file','Filecontroller@doUpload')->name('upload');
 
 Route::get('/admin/login', 'AdminController@getLogin')->name('AdminLogin')->middleware('checkLogin');
 Route::post('/admin/login', 'AdminController@postLogin')->name('PostLogin')->middleware('checkLogin');
-
+Route::get('/admin/logout','AdminController@logout')->name('logout');
 Route::get('/test','HomeController@test')->name('test');
 Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
 
     Route::get('/', 'AdminController@Home')->name('AdminHome');
     Route::get('/full-dashboard', 'AdminController@SuperAdmin')->name('superAdmin');
+    Route::get('/services','AdminController@serviceIndex')->name('getService');
+    Route::get('/serviceJson', 'AdminController@getService');
+    Route::get('/products', 'AdminController@getProduct')->name('getProduct');
     Route::group(['prefix'=>'add'], function(){
+        Route::post('/services', 'AdminController@addService');
 
     });
     Route::group(['prefix'=>'edit'], function(){
 
     });
     Route::group(['prefix'=>'delete'], function(){
+        Route::post('service', 'AdminController@removeService')->name('removeService');
 
     });
     Route::group(['prefix'=>'view'], function(){
@@ -60,6 +66,4 @@ Route::get('/testckeditor',function (){
 });
 Route::post('/testckeditor','FileController@ckeditor')->name('ckeditor');
 Route::post('/testckeditor/save','FileController@ckeditor_save')->name('ckeditor_save');
-Route::group(['prefix'=>'add'], function(){
 
-});
