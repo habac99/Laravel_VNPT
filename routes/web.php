@@ -51,7 +51,8 @@ Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
 
     });
     Route::group(['prefix'=>'edit'], function(){
-
+        Route::get('service','AdminController@getOneService')->name('getOneService');
+        Route::post('/service','AdminController@editService')->name('editService');
     });
     Route::group(['prefix'=>'delete'], function(){
         Route::post('service', 'AdminController@removeService')->name('removeService');

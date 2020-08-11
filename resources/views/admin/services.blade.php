@@ -13,10 +13,10 @@
                 </div>
 
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalLoginForm" data-backdrop="static">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Add_Form" data-backdrop="static">
                     Add Services
                 </button>
-                <div id="ModalLoginForm" class="modal fade" >
+                <div id="Add_Form" class="modal fade" >
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
                             <div class="modal-header">
@@ -26,13 +26,20 @@
                                     <form enctype="multipart/form-data" role="form" name="form_upload" id="form_upload">
                                         <div class="form-group">
                                             <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}">
-                                            <label  for="service-name" class="label label-danger">Service name:</label>
+                                            <label  for="service-name" class="label col-form-label-lg">Service name:</label>
 {{--                                            <span class="label label-primary">Primary Label</span>--}}
                                             <input required type="text" class="form-control" id="service-name" placeholder="Enter Name" name="name">
                                         </div>
                                         <div class="form-group">
+
+                                            <label  for="alt-name" class="label col-form-label-lg">Alt name:</label>
+                                            {{--                                            <span class="label label-primary">Primary Label</span>--}}
+                                            <input required type="text" class="form-control" id="alt_name" placeholder="Enter Alt Name (Eg: dich-vu-it)" name="name">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="FormControlFile" class="label label-primary">Logo</label>
-                                            <input required type="file" class="form-control-file" id="fileUpload" name="fileUpload">
+                                            <input required type="file" accept=".jpg,.jpeg,.png" class="form-control-file" id="fileUpload" name="fileUpload">
+                                            <img id="output_image"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="email" style="margin-right: 30px" class="label label-primary">Service Type:</label>
@@ -55,9 +62,9 @@
                                                 });
                                             </script>
                                         </div>
-                                        <p class="alert alert-success" id="alert_success" name="alert_success" style="display: none"></p>
+                                        <p class="alert alert-success" id="alert_success" name="alert_success" style="display: none">Thêm thành công</p>
                                         <button type="button"  class="btn btn-primary" id="btn-upload" value="Submit">Submit</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary btn_dismiss" data-dismiss="modal">Close</button>
                                     </form>
 
 
@@ -65,8 +72,84 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                <div id="edit_form" class="modal fade" >
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title">Edit Service</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form enctype="multipart/form-data" role="form" name="form_edit" id="form_edit">
+                                    <div class="form-group">
+                                        <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="edit_service_id" id="edit_service_id" >
 
-{{--                    <div class="collapse" id="AddServiceForm">--}}
+                                        <label  for="edit_service-name" class="label col-form-label-lg">Service name:</label>
+                                        {{--                                            <span class="label label-primary">Primary Label</span>--}}
+                                        <input required type="text" class="form-control" id="edit_service-name" placeholder="Enter Name" name="name">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label  for="edit_alt-name" class="label col-form-label-lg">Alt name:</label>
+                                        {{--                                            <span class="label label-primary">Primary Label</span>--}}
+                                        <input required type="text" class="form-control" id="edit_alt_name" placeholder="Enter Alt Name (Eg: dich-vu-it)" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="FormControlFile" class="label label-primary">Logo</label>
+                                        <input required type="file" accept=".jpg,.jpeg,.png" class="form-control-file" id="edit_fileUpload" name="edit_fileUpload">
+                                        <img id="edit_output_image"/>
+                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="email" style="margin-right: 30px" class="label label-primary">Service Type:</label>--}}
+{{--                                        <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id" value="4" >IT Support</label>--}}
+{{--                                        <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id" >Option 2</label>--}}
+{{--                                        <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id" >Option 3</label>--}}
+{{--                                    </div>--}}
+                                    <div class="form-group">
+                                        <label for="edit_short_description" class="label label-primary">Short Description:</label>
+                                        <textarea required class="form-control" id="edit_short_description" name="edit_short_description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="label label-primary">Full Description:</label>
+                                        <textarea required class="form-control" id="edit_full_description" name="edit_full_description"></textarea>
+                                        <script src="/ckeditor/ckeditor.js"></script>
+                                        <script>
+                                            CKEDITOR.replace( 'edit_full_description', {
+                                                filebrowserUploadUrl: "{{route('ckeditor', ['_token' => csrf_token() ])}}",
+                                                filebrowserUploadMethod: 'form'
+                                            });
+                                        </script>
+                                    </div>
+                                    <p class="alert alert-success" id="alert_success" name="alert_success_edit" style="display: none">Thông tin thay đổi thành công</p>
+                                    <button type="button"  class="btn btn-primary" id="btn-edit" value="Submit">Submit</button>
+                                    <button type="button" class="btn btn-secondary edit_dismiss" data-dismiss="modal">Close</button>
+                                </form>
+
+
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                <div id="delete_warning" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header flex-column">
+
+                                <h4 class="modal-title w-100">Are you sure?</h4>
+
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you really want to delete this record? This action cannot be undone.</p>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button"  class="btn btn-danger btn_delete" data-dismiss="modal" >Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{--                    <div class="collapse" id="AddServiceForm">--}}
 {{--                        <div class="form-group">--}}
 {{--                            <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">--}}
 {{--                            <label for="email">Service name:</label>--}}
