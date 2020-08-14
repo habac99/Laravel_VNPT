@@ -1,0 +1,35 @@
+.description {
+    opacity: 0;
+    position: absolute;
+}
+.image-block:hover .appname{
+    transition-delay: 0.2s;
+    opacity: 1;
+    /*bottom: 0px;*/
+}
+.image-block:hover .description{
+    transition-delay: 0.2s;
+    opacity: 1;
+    bottom: 0px;
+}
+.image-block:hover .blank {
+    transition-delay: 0.2s;
+    opacity: 0.9;
+    padding-top: 200px;
+}
+.blank{
+    display: block;
+    background-color: white;
+    width: 100%;
+    height: 0;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    opacity: 0;
+    transition: 0.5s;
+}
+.appname{
+    opacity: 0;
+    position: absolute;
+}
+

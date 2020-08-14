@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center fixed-top ">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center ">
     <!-- Brand -->
     <a class="navbar-brand" href="#">Logo</a>
 

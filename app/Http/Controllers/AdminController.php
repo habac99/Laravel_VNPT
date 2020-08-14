@@ -34,12 +34,12 @@ class AdminController extends Controller
     public function postLogin(Request $request){
         $remember = true;
         if(Auth::attempt(['email'=>strtolower($request->email),'password'=>$request->password],$remember)){
-            if(Auth::User()->level == 1){
+//            if(Auth::User()->level == 1){
                 return redirect()->intended('/admin');
-            }else{
-                return redirect()->intended('/admin/full-dashboard');
+//            }else{
+//                return redirect()->intended('/admin/full-dashboard');
 
-            }
+//            }
         }
             else{
             return back()->withInput()->with('error', 'Email or Password is incorrect');
@@ -56,11 +56,7 @@ class AdminController extends Controller
         exit;
     }
     public function addService(Request $request){
-//        if($request->file!= null){
-//            return json_encode(array(
-//                "statusCode" => 202
-//            ));
-//        }
+
         if($request->service_id != null && $request->service_name != null &&
             $request->short_description != null && $request->full_description != null &&
             $request->fileUpload != null && $request->alt_name != null) {
@@ -77,8 +73,8 @@ class AdminController extends Controller
                 'full_description' => $request->full_description,
                 'alt_name' => $request->alt_name,
                 'type' => 1,
-                'created_at' => Carbon::now()->format('d-m-y H:i:s'),
-                'updated_at' => Carbon::now()->format('d-m-y H:i:s'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
             return json_encode(array(
                 "statusCode" => 200
@@ -120,9 +116,9 @@ class AdminController extends Controller
             $logo = DB::table('sub_services')->where('id', '=', $request->id)->get();
             $url =$logo[0]->logo;
         }
-        if($request->service_name != null &&
-            $request->short_description != null && $request->full_description != null &&
-            $request->id != null && $request->alt_name != null){
+//        if($request->service_name != null &&
+//            $request->short_description != null && $request->full_description != null &&
+//            $request->id != null && $request->alt_name != null){
 //                $file = $request->edit_fileUpload;
 //                $storagePath = Storage::disk('azure')->putFileAs('/', $file, $file->getClientOriginalName());
 //                $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
@@ -135,17 +131,20 @@ class AdminController extends Controller
                     'alt_name' => $request->alt_name,
                     'type' => 1,
     //            'created_at' => Carbon::now()->format('d-m-y H:i:s'),
-                    'updated_at' => Carbon::now()->format('d-m-y H:i:s'),
+                    'updated_at' => Carbon::now(),
                 ]);
                 return json_encode(array(
                     "statusCode" => 200
                 ));
-        }else{
-            return json_encode(array(
-                "statusCode" => 201
-            ));
-        }
+//        }else{
+//            return json_encode(array(
+//                "statusCode" => 201
+//            ));
+//        }
 
+    }
+    public function getProduct(){
+        return view('admin.products');
     }
 
 

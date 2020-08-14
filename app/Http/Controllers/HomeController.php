@@ -46,4 +46,5 @@ class HomeController extends Controller
         $data = $events->merge($news);
         dd($data);
     }
+
 }

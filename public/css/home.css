@@ -564,4 +564,9 @@ ul {
 .other-services .other-content {
     margin-top: 5px;
 }
-
+/*.app_description{*/
+/*    width: 250px;*/
+/*    white-space: nowrap;*/
+/*    overflow: hidden;*/
+/*    text-overflow: ellipsis;*/
+/*}*/

@@ -39,23 +39,29 @@ Route::get('/admin/login', 'AdminController@getLogin')->name('AdminLogin')->midd
 Route::post('/admin/login', 'AdminController@postLogin')->name('PostLogin')->middleware('checkLogin');
 Route::get('/admin/logout','AdminController@logout')->name('logout');
 Route::get('/test','HomeController@test')->name('test');
+Route::get('/products', 'ProductController@getProduct')->name('getProduct');
 Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
 
     Route::get('/', 'AdminController@Home')->name('AdminHome');
     Route::get('/full-dashboard', 'AdminController@SuperAdmin')->name('superAdmin');
     Route::get('/services','AdminController@serviceIndex')->name('getService');
     Route::get('/serviceJson', 'AdminController@getService');
-    Route::get('/products', 'AdminController@getProduct')->name('getProduct');
+    Route::get('/products', 'AdminController@getProduct')->name('AdminGetProduct');
+    Route::get('/productJson', 'ProductController@productJson')->name('GetProductJson');
     Route::group(['prefix'=>'add'], function(){
         Route::post('/services', 'AdminController@addService');
+        Route::post('/product', 'ProductController@addProduct');
 
     });
     Route::group(['prefix'=>'edit'], function(){
         Route::get('service','AdminController@getOneService')->name('getOneService');
         Route::post('/service','AdminController@editService')->name('editService');
+        Route::get('/product','ProductController@getOneProduct');
+        Route::post('/product','ProductController@saveEditProduct');
     });
     Route::group(['prefix'=>'delete'], function(){
         Route::post('service', 'AdminController@removeService')->name('removeService');
+        Route::post('product', 'ProductController@removeProduct')->name('removeService');
 
     });
     Route::group(['prefix'=>'view'], function(){

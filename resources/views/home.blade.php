@@ -46,7 +46,7 @@
                         </a>
 
                     </div>
-                    <div class="a-service-img">
+                    <div style="margin-top: 10px" class="a-service-img">
                         <a href="{{route('get_service',$feature_service->alt_name)}}"><img width="720" height="478" src="{{$feature_service->image_link}}" class="attachment-main-service size-main-service wp-post-image" alt="quytrinhbpo-01"></a>
                     </div>
 
