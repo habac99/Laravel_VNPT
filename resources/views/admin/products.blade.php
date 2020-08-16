@@ -174,11 +174,11 @@
             })
             $(".btn.btn-secondary.btn_dismiss").click(function (){
 
-                // CKEDITOR.instances['full_description'].setData('');
+
                 $('p[name="alert_success"]').css("display", "none");
                 $('#output_image').removeAttr('src');
                 $('#form_upload')[0].reset();
-                // $('#form_upload').trigger('reset');
+
 
             })
             $("#btn-edit").click(function (){

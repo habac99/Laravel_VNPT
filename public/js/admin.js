@@ -390,9 +390,6 @@ function loadOneProduct(button){
             $("#edit-product-id").val(response['products'][0].id)
             $('#edit-app-store-link').val(response['products'][0].apple_link);
             $('#edit-play-store-link').val(response['products'][0].google_link);
-            // $("#edit_alt_name").val(response['service'][0].alt_name);
-            // $("#edit_full_description").val(response['service'][0].full_description);
-            // CKEDITOR.instances['edit_full_description'].setData(response['service'][0].full_description);
             $("#edit_output_image").attr('src',response['products'][0].logo);
 
 

@@ -10,12 +10,13 @@
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Services</h1>
+                    @if(Auth::User()->level ==2)
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Add_Form" data-backdrop="static">
+                            Add Services
+                        </button>
+                    @endif
                 </div>
-
-
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Add_Form" data-backdrop="static">
-                    Add Services
-                </button>
+                @if(Auth::User()->level==2)
                 <div id="Add_Form" class="modal fade" >
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
@@ -72,6 +73,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+                @endif
                 <div id="edit_form" class="modal fade" >
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
@@ -89,9 +91,7 @@
                                         <input required type="text" class="form-control" id="edit_service-name" placeholder="Enter Name" name="name">
                                     </div>
                                     <div class="form-group">
-
                                         <label  for="edit_alt-name" class="label col-form-label-lg">Alt name:</label>
-                                        {{--                                            <span class="label label-primary">Primary Label</span>--}}
                                         <input required type="text" class="form-control" id="edit_alt_name" placeholder="Enter Alt Name (Eg: dich-vu-it)" name="name">
                                     </div>
                                     <div class="form-group">
@@ -152,11 +152,11 @@
                 <table class="table table-bordered table-hover" id="serviceTable">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Service Name</th>
-                        <th scope="col">Logo image</th>
-                        <th scope="col">Short Description</th>
-                        <th scope="col">Options</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Name</th>
+                        <th scope="col" class="text-center">Logo image</th>
+                        <th scope="col" class="text-center">Short Description</th>
+                        <th scope="col" class="text-center">Options</th>
                         <th class="hidden" style="display: none">id</th>
                     </tr>
                     </thead>
@@ -168,7 +168,6 @@
         </div>
     </div>
     <script>
-
         $(document).ready(function (){
             fetchAll();
             $(".btn.btn-danger.btn_delete").click(function (){
@@ -185,7 +184,7 @@
                 $('p[name="alert_success"]').css("display", "none");
                 $('#output_image').removeAttr('src');
                 $('#form_upload')[0].reset();
-                // $('#form_upload').trigger('reset');
+
 
             })
             $("#btn-upload").click(function () {

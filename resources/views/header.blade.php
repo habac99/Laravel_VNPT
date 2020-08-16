@@ -31,9 +31,8 @@
                 Sản Phẩm
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">POSS – Quản lý bán hàng</a>
-                <a class="dropdown-item" href="#">ThuocCloud – Quản lý nhà thuốc</a>
-                <a class="dropdown-item" href="#">aHoadon – Hóa Đơn Điện Tử</a>
+                <a class="dropdown-item" href="{{route('getProduct')}}">All products</a>
+
 
             </div>
         </li>

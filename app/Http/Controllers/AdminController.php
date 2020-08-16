@@ -116,13 +116,7 @@ class AdminController extends Controller
             $logo = DB::table('sub_services')->where('id', '=', $request->id)->get();
             $url =$logo[0]->logo;
         }
-//        if($request->service_name != null &&
-//            $request->short_description != null && $request->full_description != null &&
-//            $request->id != null && $request->alt_name != null){
-//                $file = $request->edit_fileUpload;
-//                $storagePath = Storage::disk('azure')->putFileAs('/', $file, $file->getClientOriginalName());
-//                $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
-                DB::table('sub_services')->where('id', '=', $request->id)->update([
+        DB::table('sub_services')->where('id', '=', $request->id)->update([
                     'service_name' => $request->service_name,
                     'logo' => $url,
                     'image_link' => $url,
@@ -130,18 +124,12 @@ class AdminController extends Controller
                     'full_description' => $request->full_description,
                     'alt_name' => $request->alt_name,
                     'type' => 1,
-    //            'created_at' => Carbon::now()->format('d-m-y H:i:s'),
+    //
                     'updated_at' => Carbon::now(),
                 ]);
                 return json_encode(array(
                     "statusCode" => 200
                 ));
-//        }else{
-//            return json_encode(array(
-//                "statusCode" => 201
-//            ));
-//        }
-
     }
     public function getProduct(){
         return view('admin.products');

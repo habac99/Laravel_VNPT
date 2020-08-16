@@ -35,8 +35,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage</h6>
-                <a class="collapse-item" href="#">Services</a>
-                <a class="collapse-item" href="#">Products</a>
+                <a class="collapse-item" href="{{route('getService')}}">Services</a>
+                <a class="collapse-item" href="{{route('AdminGetProduct')}}">Products</a>
                 <a class="collapse-item" href="#">News</a>
                 <a class="collapse-item" href="#">Event</a>
                 <a class="collapse-item" href="#">Service Request</a>
