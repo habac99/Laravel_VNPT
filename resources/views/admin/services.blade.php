@@ -184,12 +184,13 @@
                 $('p[name="alert_success"]').css("display", "none");
                 $('#output_image').removeAttr('src');
                 $('#form_upload')[0].reset();
+                fetchAll();
 
 
             })
             $("#btn-upload").click(function () {
                 uploadService(this);
-                fetchAll();
+
             })
         })
     </script>

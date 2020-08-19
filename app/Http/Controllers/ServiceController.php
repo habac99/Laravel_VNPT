@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
-    //
+
     function getService(Request $request){
         $data['service'] = DB::table('sub_services')->where('alt_name','=',$request->name)->get();
 
         if($data['service'][0]->type==0){
             return view('one_service_with_request',$data);
         }
-        else if($data['service'][0]->type = 1){
+        else if($data['service'][0]->type == 1){
             return view('one_service_no_request',$data);
         }
 
@@ -23,7 +23,7 @@ class ServiceController extends Controller
        dd($request);
 //        return back()->withInput()->with('success','test');
     }
-    public function service_type(Request $request){
+    public function serviceType(Request $request){
         $id = DB::table('services')->where('alt_name','=', $request->name)->get();
         $data['services'] = DB::table('sub_services')->where('service_id','=', $id[0]->id)->get();
         dd($data);

@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -26,7 +27,8 @@ class AdminController extends Controller
     public function SuperAdmin(){
         if(Auth::User()->level==2)
         echo('this is super admin home');
-        else return redirect()->intended('/admin');
+        else
+            return redirect()->intended('/admin');
     }
     public function getLogin(){
         return view('admin.login');
@@ -62,8 +64,18 @@ class AdminController extends Controller
             $request->fileUpload != null && $request->alt_name != null) {
 
             $file = $request->fileUpload;
-            $storagePath =  Storage::disk('azure')->putFileAs('/',$file,$file->getClientOriginalName());
+            $extension = $file->getClientOriginalExtension();
+            $storagePath = $file->getClientOriginalName();
             $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+            $width = Image::make($file)->width();
+            $height = Image::make($file)->height();
+            if($width>1920) $width=1920;
+            if($height>1080) $height = 1080;
+            $img = Image::make($file)->resize($width,$height,function ($constraint){
+                $constraint->aspectRatio();
+            })->encode($extension);
+
+            Storage::disk('azure')->put($storagePath,$img->__toString());
             DB::table('sub_services')->insert([
                 'service_id' => $request->service_id,
                 'service_name' => $request->service_name,
@@ -108,8 +120,18 @@ class AdminController extends Controller
 
         if($request->edit_fileUpload != null){
             $file = $request->edit_fileUpload;
-            $storagePath = Storage::disk('azure')->putFileAs('/', $file, $file->getClientOriginalName());
+            $storagePath = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
             $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+            $width = Image::make($file)->width();
+            $height = Image::make($file)->height();
+            if($width>1920) $width=1920;
+            if($height>1080) $height = 1080;
+            $img = Image::make($file)->resize($width,$height,function ($constraint){
+                $constraint->aspectRatio();
+            })->encode($extension);
+
+            Storage::disk('azure')->put($storagePath,$img->__toString());
 
         }
         else{

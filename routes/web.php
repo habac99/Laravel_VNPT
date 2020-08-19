@@ -27,7 +27,7 @@ Route::group(['prefix'=>'service'],function (){
 
 });
 Route::group(['prefix'=>'services'],function (){
-    Route::get('/{name}', 'ServiceController@ServiceType')->name('service_type');
+    Route::get('/{name}', 'ServiceController@serviceType')->name('service_type');
 
 
 });
@@ -40,6 +40,8 @@ Route::post('/admin/login', 'AdminController@postLogin')->name('PostLogin')->mid
 Route::get('/admin/logout','AdminController@logout')->name('logout');
 Route::get('/test','HomeController@test')->name('test');
 Route::get('/products', 'ProductController@getProduct')->name('getProduct');
+Route::get('/van-hoa/tin-tuc','EventController@getAllEvent')->name('getAllEvent');
+Route::get('/van-hoa/{event_name}','EventController@getOneEvent')->name('getOneEvent');
 Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
 
     Route::get('/', 'AdminController@Home')->name('AdminHome');

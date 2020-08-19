@@ -53,7 +53,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Bản Tin</a>
-                <a class="dropdown-item" href="#">Nổi Bật</a>
+                <a class="dropdown-item" href="{{route('getAllEvent')}}">Nổi Bật</a>
 
 
             </div>
