@@ -28,10 +28,10 @@ class HomeController extends Controller
         $data['feature_services']= DB::table('services')->where('isHighlight','=',true)->get();
         $data['feature_customers']= DB::table('projects')->limit('10')->get();
         $data['comments']=DB::table('customer_comment')->get();
-        $data['featured_news'] = DB::table('events')->where('is_highlight','=',true)->get();
-//        $news = DB::table('news')->where('is_highlight','=',true)->get();
+        $events = DB::table('events')->where('is_highlight','=',true)->get();
+        $news = DB::table('news')->where('is_highlight','=',true)->get();
 
-//        $data['featured_news']=$events->merge($news);
+        $data['featured_news']=$events->merge($news);
         return view('home',$data);
     }
     public function test(){
