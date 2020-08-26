@@ -12,7 +12,7 @@
                     <h1 class="h3 mb-0 text-gray-800">Services</h1>
                     @if(Auth::User()->level ==2)
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Add_Form" data-backdrop="static">
-                            Add Services
+                            Thêm mới
                         </button>
                     @endif
                 </div>
@@ -21,7 +21,7 @@
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title">Thêm mới</h1>
+                                <h1 class="modal-title">Thêm Dịch Vụ</h1>
                             </div>
                                 <div class="modal-body">
                                     <form enctype="multipart/form-data" role="form" name="form_upload" id="form_upload">
@@ -86,7 +86,7 @@
                                         <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}">
                                         <input type="hidden" name="edit_service_id" id="edit_service_id" >
 
-                                        <label  for="edit_service-name" class="label col-form-label-lg">Service name:</label>
+                                        <label  for="edit_service-name" class="label col-form-label-lg">Tên:</label>
                                         {{--                                            <span class="label label-primary">Primary Label</span>--}}
                                         <input required type="text" class="form-control" id="edit_service-name" placeholder="Enter Name" name="name">
                                     </div>
@@ -106,11 +106,11 @@
 {{--                                        <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id" >Option 3</label>--}}
 {{--                                    </div>--}}
                                     <div class="form-group">
-                                        <label for="edit_short_description" class="label label-primary">Short Description:</label>
+                                        <label for="edit_short_description" class="label label-primary">Mô tả ngắn:</label>
                                         <textarea required class="form-control" id="edit_short_description" name="edit_short_description"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email" class="label label-primary">Full Description:</label>
+                                        <label for="email" class="label label-primary">Mô tả đầy đủ:</label>
                                         <textarea required class="form-control" id="edit_full_description" name="edit_full_description"></textarea>
                                         <script src="/ckeditor/ckeditor.js"></script>
                                         <script>
@@ -153,10 +153,10 @@
                     <thead>
                     <tr>
                         <th scope="col" class="text-center">#</th>
-                        <th scope="col" class="text-center">Name</th>
-                        <th scope="col" class="text-center">Logo image</th>
-                        <th scope="col" class="text-center">Short Description</th>
-                        <th scope="col" class="text-center">Options</th>
+                        <th scope="col" class="text-center">Tên</th>
+                        <th scope="col" class="text-center">Logo</th>
+                        <th scope="col" class="text-center">Mô tả ngắn</th>
+                        <th scope="col" class="text-center">Tuỳ chọn</th>
                         <th class="hidden" style="display: none">id</th>
                     </tr>
                     </thead>
