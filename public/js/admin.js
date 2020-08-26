@@ -25,12 +25,32 @@ function fetchAll() {
         dataType: 'json',
         success: function (response) {
             var len = 0;
+            var page = 0;
             $('#serviceTable tbody').empty();
-            if (response['services'] != null) {
-                len = response['services'].length;
+            if (response['count'] != null) {
+                len = response['count'];
             }
             if (len > 0) {
-                for (var i = 0; i < len; i++) {
+                if(len % 5 === 0) page = len/5;
+                else page = Math.floor(len/5 +1);
+                $("#navbar").html('');
+
+                var abc =" <li class=\"page-item disabled\" aria-disabled=\"true\" aria-label=\"« Previous\">\n" +
+                    "                            <span class=\"page-link\" aria-hidden=\"true\">‹</span>\n" +
+                    "                        </li>\n" +
+                    "                        <li class=\"page-item active page-1\"  aria-current=\"page\"><button id=\"1\"  class=\"page-link btn btn-primary\">1</button></li>"
+                var nav = "<li class=\"page-item disabled \">\n" +
+                    "            <a class=\"page-link\" href=\"\" rel=\"next\" aria-label=\"Next »\">›</a>\n" +
+                    "        </li>";
+                $("#navbar").append(abc);
+                for(var i =2;i<=page;i++){
+                    var li = "<li class=\"page-item \" "+ "id='" + i +"'"+"><button type='button' " + " " + "id='" + i + "'" + " class=\"page-link btn btn-primary\" >"+ i + "</button></li>";
+                    $("#navbar").append(li);
+                }
+                $("#navbar").append(nav);
+
+
+                for (var i = 0; i < 5; i++) {
                     var id = response['services'][i].id;
                     var service_name = response['services'][i].service_name;
                     var logo_image = response['services'][i].logo;
@@ -39,7 +59,7 @@ function fetchAll() {
                     var tr_str = "<tr>" +
                         "<td>" + (i + 1) + "</td>" +
                         "<td>" + service_name + "</td>" +
-                        "<td>" + "<img style='height: 78px' src=" + '"' + logo_image + '"' + "></td>" +
+                        "<td>" + "<img style='height: 78px' src=" + '"'   +flagsUrl + logo_image + '"' + "></td>" +
                         "<td>" + short_description + "</td>" +
                         "<td>" +
                         "<button type='submit' style='margin-bottom: 5px' class='btn btn-info btn-update' data-toggle='modal' data-target='#edit_form' data-backdrop='static' " + "id='" + id +  "'>" + 'Sửa' + "</button>" +
@@ -61,6 +81,14 @@ function fetchAll() {
 
                 console.log(this.id);
                 $(".btn.btn-danger.btn_delete").attr('id',this.id);
+            })
+            $(".page-link.btn.btn-primary").click(function (){
+                $(".page-item.active.page-1").removeClass('active');
+
+                refetch(parseInt(this.id))
+                $(".page-item." + this.id).addClass('active');
+
+
             })
 
 
@@ -267,7 +295,7 @@ function getAllProduct(){
                         +   "<div class=\"card-body\">"
                         +       "<div class=\"row no-gutters align-items-center\">"
                         +           "<div class=\"col mr-0 image-block\">"
-                        +               "<img style=\"width:100%\" src=" + '"' + logo + '"' + ">"
+                        +               "<img style=\"width:100%\" src=" + '"'  + flagsUrl + logo + '"' + ">"
                         +                "<div class=\"blank\"></div>"
                         +                   "<div class=\"description\">"
                         +                        "<div class=\"align-text-top\" style=\"margin-bottom: 20px\">" + "<b>"+ product_name + "</b>" + "</div>"
@@ -439,5 +467,61 @@ function editProduct(){
             alert('Vui lòng xem lại thông tin nhập vào')
     }
 
+
+}
+function refetch(page_number){
+
+    // var page_number= parseInt(page_link.id);
+    var start = Math.max(page_number-1,0) *5;
+    var xhr = $.ajax({
+        url: '/admin/services/refetch',
+        type: 'get',
+        dataType: "json",
+        data: {
+            start:start
+        },
+        success: function (response){
+            var len = 0;
+            $('#serviceTable tbody').empty();
+            if (response['select'] != null) {
+                len = response['select'].length;
+            }
+            for (var i = 0; i < len; i++) {
+                var id = response['select'][i].id;
+                var service_name = response['select'][i].service_name;
+                var logo_image = response['select'][i].logo;
+                var short_description = response['select'][i].short_description;
+                var abc = '';
+
+                var tr_str = "<tr>" +
+                    "<td>" + (i + 1) + "</td>" +
+                    "<td>" + service_name + "</td>" +
+                    "<td>" + "<img style='height: 78px' src=" + '"' +flagsUrl + logo_image + '"' + "></td>" +
+                    "<td>" + short_description + "</td>" +
+                    "<td>" +
+                    "<button type='submit' style='margin-bottom: 5px' class='btn btn-info btn-update' data-toggle='modal' data-target='#edit_form' data-backdrop='static' " + "id='" + id +  "'>" + 'Sửa' + "</button>" +
+                    "<button type='submit' class='btn btn-danger btn-remove' data-toggle='modal' data-target='#delete_warning' data-backdrop='static' " + "id='" + id + "'>" + 'Xoá' + "</button>" +
+                    "</td>" +
+                    "<td style='display: none" + id + "td>"
+                "</tr>";
+
+                $("#serviceTable tbody").append(tr_str);
+            }
+            $(".btn.btn-info.btn-update").click(function (){
+                // alert('clicked');
+                load(this);
+            })
+
+            $(".btn.btn-danger.btn-remove").click(function (){
+
+                console.log(this.id);
+                $(".btn.btn-danger.btn_delete").attr('id',this.id);
+            })
+
+
+        }
+
+    })
+    console.log(xhr);
 
 }

@@ -10,7 +10,7 @@
                 @foreach($products as $product)
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="container">
-                        <img width="300px" height="300px" src="{{$product->logo}}">
+                        <img width="300px" height="300px" src="{{asset($product->logo)}}">
                     </div>
                     <div class="container justify-content-center" >
                         <div class="container justify-content-center">
@@ -43,6 +43,7 @@
         </div>
     </div>
     <script type="text/javascript">
+
         $(document).ready(function (){
             $(".pagination").addClass('justify-content-center');
 
@@ -61,6 +62,7 @@
                 url: '?page='+ page,
                 success: (function(data) {
                     $('body').html(data);
+                    history.replaceState('','','?page='+ page);
                 }),
             })
 

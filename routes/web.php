@@ -48,6 +48,7 @@ Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
     Route::get('/full-dashboard', 'AdminController@SuperAdmin')->name('superAdmin');
     Route::get('/services','AdminController@serviceIndex')->name('getService');
     Route::get('/serviceJson', 'AdminController@getService');
+    Route::get('/services/refetch','AdminController@serviceRefetch')->name('ServiceRefetch');
     Route::get('/products', 'AdminController@getProduct')->name('AdminGetProduct');
     Route::get('/productJson', 'ProductController@productJson')->name('GetProductJson');
     Route::group(['prefix'=>'add'], function(){
@@ -75,4 +76,4 @@ Route::get('/testckeditor',function (){
 });
 Route::post('/testckeditor','FileController@ckeditor')->name('ckeditor');
 Route::post('/testckeditor/save','FileController@ckeditor_save')->name('ckeditor_save');
-
+Route::get('/testabc', 'TestController@index');

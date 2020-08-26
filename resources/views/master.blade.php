@@ -32,5 +32,29 @@
 
 
         @include('footer')
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyBotcabYBiDWN_uhImcTNVqIuz3DoMr2P0",
+                authDomain: "vnpt-918d6.firebaseapp.com",
+                databaseURL: "https://vnpt-918d6.firebaseio.com",
+                projectId: "vnpt-918d6",
+                storageBucket: "vnpt-918d6.appspot.com",
+                messagingSenderId: "961509214235",
+                appId: "1:961509214235:web:c594ade4ba40b4b59690be",
+                measurementId: "G-NF4VWTH64M"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+        </script>
     </body>
 </html>

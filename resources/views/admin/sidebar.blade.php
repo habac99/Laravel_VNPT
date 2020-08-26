@@ -35,34 +35,34 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage</h6>
-                <a class="collapse-item" href="{{route('getService')}}">Services</a>
-                <a class="collapse-item" href="{{route('AdminGetProduct')}}">Products</a>
-                <a class="collapse-item" href="#">News</a>
-                <a class="collapse-item" href="#">Event</a>
-                <a class="collapse-item" href="#">Service Request</a>
+                <a class="collapse-item" href="{{route('getService')}}">Dịch vụ</a>
+                <a class="collapse-item" href="{{route('AdminGetProduct')}}">Sản Phẩm</a>
+{{--                <a class="collapse-item" href="#">News</a>--}}
+{{--                <a class="collapse-item" href="#">Event</a>--}}
+{{--                <a class="collapse-item" href="#">Service Request</a>--}}
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span>Add new</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Add new</h6>
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">--}}
+{{--            <i class="fa fa-fw fa-wrench"></i>--}}
+{{--            <span>Add new</span>--}}
+{{--        </a>--}}
+{{--        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <h6 class="collapse-header">Add new</h6>--}}
 {{--                <a class="collapse-item" href="#">Service Type</a>--}}
-                <a class="collapse-item" href="#">Services</a>
-                <a class="collapse-item" href="#">Products</a>
-                <a class="collapse-item" href="#">Events</a>
-                <a class="collapse-item" href="#">News</a>
-                <a class="collapse-item" href="#">Recruitment Post</a>
-                <a class="collapse-item" href="#">Other Post</a>
-            </div>
-        </div>
-    </li>
+{{--                <a class="collapse-item" href="#">Services</a>--}}
+{{--                <a class="collapse-item" href="#">Products</a>--}}
+{{--                <a class="collapse-item" href="#">Events</a>--}}
+{{--                <a class="collapse-item" href="#">News</a>--}}
+{{--                <a class="collapse-item" href="#">Recruitment Post</a>--}}
+{{--                <a class="collapse-item" href="#">Other Post</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -73,31 +73,31 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fa fa-fw fa-folder"></i>
-            <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="#">Login</a>
-                <a class="collapse-item" href="#">Register</a>
-                <a class="collapse-item" href="#">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="#">404 Page</a>
-                <a class="collapse-item" href="#">Blank Page</a>
-            </div>
-        </div>
-    </li>
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">--}}
+{{--            <i class="fa fa-fw fa-folder"></i>--}}
+{{--            <span>Pages</span>--}}
+{{--        </a>--}}
+{{--        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <h6 class="collapse-header">Login Screens:</h6>--}}
+{{--                <a class="collapse-item" href="#">Login</a>--}}
+{{--                <a class="collapse-item" href="#">Register</a>--}}
+{{--                <a class="collapse-item" href="#">Forgot Password</a>--}}
+{{--                <div class="collapse-divider"></div>--}}
+{{--                <h6 class="collapse-header">Other Pages:</h6>--}}
+{{--                <a class="collapse-item" href="#">404 Page</a>--}}
+{{--                <a class="collapse-item" href="#">Blank Page</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
+{{--    <li class="nav-item">--}}
+{{--        <a class="nav-link" href="charts.html">--}}
+{{--            <i class="fa fa-fw fa-chart-area"></i>--}}
+{{--            <span>Charts</span></a>--}}
+{{--    </li>--}}
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">

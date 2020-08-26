@@ -53,9 +53,32 @@ class AdminController extends Controller
         return view('admin.services');
     }
     public function getService(){
-        $data['services'] = DB::table('sub_services')->get();
+        $data['count'] = DB::table('sub_services')->count('id');
+        $data['services'] = DB::table('sub_services')->orderBy('updated_at','desc')->limit(5)->get();
         echo json_encode($data);
+//        dd($data);
+
         exit;
+    }
+    public function serviceRefetch(Request $request){
+        $data1['all'] = DB::table('sub_services')->orderBy('updated_at','desc')->get();
+
+        $start = $request->start;
+        $end = $start+5;
+        if ($end>$data1['all']->count()){
+            $end = $data1['all']->count();
+        }
+        $data['select']=DB::table('sub_services')->where('id','=','xxx')->get();
+
+        for ($i=$start;$i<$end;$i++) {
+            $data['select']->push($data1['all'][$i]);
+        }
+        echo json_encode($data);
+
+        exit;
+
+
+
     }
     public function addService(Request $request){
 
@@ -65,8 +88,8 @@ class AdminController extends Controller
 
             $file = $request->fileUpload;
             $extension = $file->getClientOriginalExtension();
-            $storagePath = $file->getClientOriginalName();
-            $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+            $storagePath = Carbon::now()->toDateString().$file->getClientOriginalName();
+            $url = 'storage/img/'. $storagePath;
             $width = Image::make($file)->width();
             $height = Image::make($file)->height();
             if($width>1920) $width=1920;
@@ -75,7 +98,8 @@ class AdminController extends Controller
                 $constraint->aspectRatio();
             })->encode($extension);
 
-            Storage::disk('azure')->put($storagePath,$img->__toString());
+
+            Storage::disk('local')->put('public/img/'.$storagePath,$img->__toString());
             DB::table('sub_services')->insert([
                 'service_id' => $request->service_id,
                 'service_name' => $request->service_name,
@@ -120,9 +144,10 @@ class AdminController extends Controller
 
         if($request->edit_fileUpload != null){
             $file = $request->edit_fileUpload;
-            $storagePath = $file->getClientOriginalName();
+            $storagePath = Carbon::now()->toDateString().$file->getClientOriginalName();
+
             $extension = $file->getClientOriginalExtension();
-            $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+            $url = 'storage/img/'. $storagePath;
             $width = Image::make($file)->width();
             $height = Image::make($file)->height();
             if($width>1920) $width=1920;
@@ -131,7 +156,7 @@ class AdminController extends Controller
                 $constraint->aspectRatio();
             })->encode($extension);
 
-            Storage::disk('azure')->put($storagePath,$img->__toString());
+            Storage::disk('local')->put('public/img/'.$storagePath,$img->__toString());
 
         }
         else{
@@ -156,6 +181,7 @@ class AdminController extends Controller
     public function getProduct(){
         return view('admin.products');
     }
+
 
 
 

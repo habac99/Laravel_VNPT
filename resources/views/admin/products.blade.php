@@ -166,6 +166,7 @@
 
     </div>
     <script>
+        var flagsUrl = '{{ URL::asset('') }}';
         $(document).ready(function (){
             getAllProduct();
             $("#btn-upload").click(function () {

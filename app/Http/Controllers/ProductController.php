@@ -33,15 +33,16 @@ class ProductController extends Controller
             $file = $request->fileUpload;
             $extension = $file->getClientOriginalExtension();
 
-            $storagePath =  Storage::disk('azure')->putFileAs('/',$file,$file->getClientOriginalName());
-            $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+
+            $storagePath = Carbon::now()->toDateString().$file->getClientOriginalName();
+            $url = 'storage/img/'. $storagePath;
             $width = Image::make($file)->width();
             $heigh = Image::make($file)->height();
             $img = Image::make($file)->fit(300,300,function ($constraint){
                 $constraint->aspectRatio();
             })->encode($extension);
 
-            $storagePath2 =  Storage::disk('azure')->put($storagePath,$img->__toString());
+            $storagePath2 =  Storage::disk('local')->put('public/img/'.$storagePath,$img->__toString());
 
             DB::table('products')->insert([
 
@@ -77,9 +78,10 @@ class ProductController extends Controller
 
         if($request->edit_fileUpload != null) {
             $file = $request->edit_fileUpload;
-            $storagePath = $file->getClientOriginalName();
+
             $extension = $file->getClientOriginalExtension();
-            $url = "https://vnptproject.blob.core.windows.net/imagecontainer/" . $storagePath;
+            $storagePath = Carbon::now()->toDateString().$file->getClientOriginalName();
+            $url = 'storage/img/'. $storagePath;
 //            $width = Image::make($file)->width();
 //            $height = Image::make($file)->height();
 //            if($width>1920) $width=1920;
@@ -88,7 +90,7 @@ class ProductController extends Controller
                 $constraint->aspectRatio();
             })->encode($extension);
 
-            Storage::disk('azure')->put($storagePath,$img->__toString());
+            Storage::disk('local')->put('pubic/img'.$storagePath,$img->__toString());
         }else{
             $logo = DB::table('products')->where('id', '=', $request->id)->get();
             $url =$logo[0]->logo;

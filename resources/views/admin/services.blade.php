@@ -164,15 +164,32 @@
 
                     </tbody>
                 </table>
+                <nav>
+                    <ul class="pagination justify-content-center" id="navbar">
+
+                        <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
+                            <span class="page-link" aria-hidden="true">‹</span>
+                        </li>
+                        <li class="page-item active"  aria-current="page"><a id="1"  class="page-link">1</a></li>
+
+
+
+
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
     <script>
+        var flagsUrl = '{{ URL::asset('') }}';
         $(document).ready(function (){
+            // $('#serviceTable').DataTable();
             fetchAll();
+
             $(".btn.btn-danger.btn_delete").click(function (){
                 removeService(this);
                 fetchAll();
+
             })
             $("#btn-edit").click(function (){
                 editService(this);
@@ -192,6 +209,8 @@
                 uploadService(this);
 
             })
+            // $("#page-item.page-1").addClass('active');
+
         })
     </script>
 @endsection

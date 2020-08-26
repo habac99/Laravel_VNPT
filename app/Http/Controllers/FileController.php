@@ -21,7 +21,7 @@ class FileController extends Controller
 //        $file->storeAs('/','azure');
 
 
-        $storagePath =  Storage::disk('azure')->putFileAs('/',$file,$file->getClientOriginalName());
+        $storagePath =  Storage::disk('local')->putFileAs('public/img',$file,$file->getClientOriginalName());
         echo($storagePath);
 
 
