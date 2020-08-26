@@ -45,7 +45,7 @@
             <div class="outside-border">
                 <div class="inside-border">
                     <div class="a-service-title">
-                        <a href="https://dcv.vn/service/phai-cu-nhan-luc-cntt/">
+                        <a href="/service/phai-cu-nhan-luc-cntt">
                             <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/11/bpo-icon.png">
                             <span class="service-name">
                     <!-- Hien thi tieu de -->
@@ -54,7 +54,7 @@
                         </a>
                     </div>
                     <div class="a-service-title">
-                        <a href="https://dcv.vn/service/gia-cong-phan-mem/">
+                        <a href="/service/gia-cong-phan-mem/">
                             <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/11/giacong.png">
                             <span class="service-name">
                     <!-- Hien thi tieu de -->
@@ -63,7 +63,7 @@
                         </a>
                     </div>
                     <div class="a-service-title">
-                        <a href="https://dcv.vn/service/noi-dung-so/">
+                        <a href="/service/noi-dung-so/">
                             <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/11/noidungso.png">
                             <span class="service-name">
                     <!-- Hien thi tieu de -->
@@ -74,11 +74,11 @@
 
                     <div class="sb-service">
                         <div class="other-title clearfix">
-                            <a href="https://dcv.vn/services/bpo-thue-ngoai-quy-trinh-nghiep-vu/">
+                            <a href="#">
                                 <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/11/giaiphap.png">
                             </a>
                             <p>
-                                <a href="https://dcv.vn/services/bpo-thue-ngoai-quy-trinh-nghiep-vu/">
+                                <a href="#">
                     <span>
                       BPO – THUÊ NGOÀI QUY TRÌNH NGHIỆP VỤ                    </span>
                                 </a>
@@ -87,19 +87,19 @@
                         <div class="other-content">
                             <ul>
                                 <li>
-                                    <a href="https://dcv.vn/service/cham-soc-khach-hang/">
+                                    <a href="#">
                                         Chăm sóc khách hàng                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/tuyen-dung-nhan-su/">
+                                    <a href="#">
                                         Tuyển dụng nhân sự                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/quan-tri-nhan-su/">
+                                    <a href="#">
                                         Quản trị nhân sự                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/gia-cong-xu-ly-du-lieu-nhap-lieu/">
+                                    <a href="#">
                                         Gia công xử lý dữ liệu, nhập liệu                          </a>
                                 </li>
                             </ul>
@@ -107,11 +107,11 @@
                     </div>
                     <div class="sb-service">
                         <div class="other-title clearfix">
-                            <a href="https://dcv.vn/services/digital-marketing/">
+                            <a href="#">
                                 <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/11/digital-marketing.png">
                             </a>
                             <p style="margin-top: 20px;">
-                                <a href="https://dcv.vn/services/digital-marketing/">
+                                <a href="#">
                     <span>
                       DIGITAL MARKETING                    </span>
                                 </a>
@@ -120,19 +120,19 @@
                         <div class="other-content">
                             <ul>
                                 <li>
-                                    <a href="https://dcv.vn/service/email-marketing/">
+                                    <a href="#">
                                         Email marketing                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/social-media-marketing/">
+                                    <a href="#">
                                         Social media marketing                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/mobile-marketing/">
+                                    <a href="#">
                                         Mobile marketing                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/xay-dung-website/">
+                                    <a href="#">
                                         Chăm sóc website                          </a>
                                 </li>
                             </ul>
@@ -140,11 +140,11 @@
                     </div>
                     <div class="sb-service">
                         <div class="other-title clearfix">
-                            <a href="https://dcv.vn/services/it-support/">
+                            <a href="/services/it-support/">
                                 <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/12/digital-support.png">
                             </a>
                             <p>
-                                <a href="https://dcv.vn/services/it-support/">
+                                <a href="/services/it-support/">
                     <span>
                       IT SUPPORT                    </span>
                                 </a>
@@ -153,19 +153,19 @@
                         <div class="other-content">
                             <ul>
                                 <li>
-                                    <a href="https://dcv.vn/service/cho-thue-tong-dai-1900-1800/">
+                                    <a href="/service/cho-thue-tong-dai-1900-1800/">
                                         Cho thuê tổng đài CSKH 1900-1800                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/tu-van-thiet-ke-giam-sat-thi-cong-di-doi-cac-thong/">
+                                    <a href="/service/tu-van-thiet-ke-giam-sat-thi-cong-di-doi-cac-thong/">
                                         Tư vấn, thiết kế, thi công, di dời các hệ thống                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/tu-van-thiet-ke-thi-cong-mang-may-tinh-camera-ninh/">
+                                    <a href="/service/tu-van-thiet-ke-thi-cong-mang-may-tinh-camera-ninh/">
                                         Tư vấn, thiết kế, thi công mạng máy tính                          </a>
                                 </li>
                                 <li>
-                                    <a href="https://dcv.vn/service/dich-vu-it/">
+                                    <a href="/service/dich-vu-it/">
                                         Bảo trì hạ tầng CNTT                          </a>
                                 </li>
                             </ul>

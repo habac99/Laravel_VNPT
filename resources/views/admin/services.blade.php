@@ -21,13 +21,13 @@
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title">Add Service</h1>
+                                <h1 class="modal-title">Thêm mới</h1>
                             </div>
                                 <div class="modal-body">
                                     <form enctype="multipart/form-data" role="form" name="form_upload" id="form_upload">
                                         <div class="form-group">
                                             <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}">
-                                            <label  for="service-name" class="label col-form-label-lg">Service name:</label>
+                                            <label  for="service-name" class="label col-form-label-lg">Tên:</label>
 {{--                                            <span class="label label-primary">Primary Label</span>--}}
                                             <input required type="text" class="form-control" id="service-name" placeholder="Enter Name" name="name">
                                         </div>
@@ -43,17 +43,17 @@
                                             <img width="200px" id="output_image"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email" style="margin-right: 30px" class="label label-primary">Service Type:</label>
+                                            <label for="email" style="margin-right: 30px" class="label label-primary">Loại</label>
                                             <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id" value="4" >IT Support</label>
                                             <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id" value="2" >Phái cử</label>
                                             <label class="radio-inline" style="margin-right: 30px"><input type="radio" id="service_id" name="service_id"value="3" >Gia công</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email" class="label label-primary">Short Description:</label>
+                                            <label for="email" class="label label-primary">Mô tả ngắn:</label>
                                             <textarea required class="form-control" id="short_description" name="short_description"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email" class="label label-primary">Full Description:</label>
+                                            <label for="email" class="label label-primary">Mô tả đầy đủ:</label>
                                             <textarea required class="form-control" id="full_description" name="full_description"></textarea>
                                             <script src="/ckeditor/ckeditor.js"></script>
                                             <script>

@@ -19,10 +19,10 @@
                 Dịch vụ
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Phái Cử Nhân Lực CNTT</a>
-                <a class="dropdown-item" href="#">Gia Công Phần Mềm</a>
-                <a class="dropdown-item" href="#">IT Support</a>
-                <a class="dropdown-item" href="#">Nội Dung Số</a>
+                <a class="dropdown-item" href="/service/phai-cu-nhan-luc-cntt">Phái Cử Nhân Lực CNTT</a>
+                <a class="dropdown-item" href="/service/gia-cong-phan-mem">Gia Công Phần Mềm</a>
+                <a class="dropdown-item" href="{{route('service_type','it-support')}}">IT Support</a>
+                <a class="dropdown-item" href="/service/noi-dung-so">Nội Dung Số</a>
                 <a class="dropdown-item" href="#">BPO-Thuê Ngoài Quy Trình Nghiệp Vụ</a>
             </div>
         </li>
