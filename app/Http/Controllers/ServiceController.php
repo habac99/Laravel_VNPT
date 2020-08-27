@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,8 +25,23 @@ class ServiceController extends Controller
 
     }
     public function request_service(Request $request){
-       dd($request);
-//        return back()->withInput()->with('success','test');
+        DB::table('service_request')->insert([
+            'c_name'=>$request->your_name,
+            'c_email'=>$request->your_email,
+            'c_phone'=>$request->your_phone,
+            'c_company'=>$request->your_company,
+            'c_address'=>$request->your_address,
+            'service_name'=>$request->service_name,
+            'description'=>$request->description,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now()
+
+        ]);
+//       dd($request);
+//        return back()->withInput()->with('success','Gửi yêu cầu thành công');
+        return json_encode(array(
+            "statusCode" => 200
+        ));
     }
     public function serviceType(Request $request){
         $data['id']= DB::table('services')->where('alt_name','=', $request->name)->get();

@@ -77,7 +77,7 @@
                                     <br>                              <div role="form" class="wpcf7" id="wpcf7-f1195-p1160-o1" lang="vi" dir="ltr">
                                         <div class="screen-reader-response"></div>
 
-                                        <form action="{{route('request_service')}}" method="post" class="wpcf7-form" novalidate="novalidate">
+                                        <form  class="wpcf7-form" id="serviceRequestForm" novalidate="novalidate">
                                             @csrf
                                             <div style="display: none;">
                                                 <input type="hidden" name="_wpcf7" value="1195">
@@ -88,23 +88,24 @@
                                             </div>
                                             <div class="form-group info">
                                                 <h4 class="job-title">Thông tin doanh nghiệp</h4>
-                                                <p>
-                                                    <span class="wpcf7-form-control-wrap your-copany"><input type="hidden" name="service_name" value="{{$service[0]->service_name}}" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder=""></span><br>
-                                                    <span class="wpcf7-form-control-wrap your-copany"><input type="text" name="your-copany" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Tên công ty"></span><br>
-                                                    <span class="wpcf7-form-control-wrap your-address"><input type="text" name="your-address" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Địa chỉ"></span><br>
-                                                    <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Người liên hệ"></span><br>
-                                                    <span class="wpcf7-form-control-wrap your-phone"><input type="tel" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel form-control" aria-required="true" aria-invalid="false" placeholder="Điện thoại"></span><br>
-                                                    <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control" aria-required="true" aria-invalid="false" placeholder="Email"></span><br>
-                                                    <span class="wpcf7-form-control-wrap mota-yeucau"><textarea name="mota-yeucau" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required form-control col-md-5" aria-required="true" aria-invalid="false" placeholder="Mô tả yêu cầu"></textarea></span>
-                                                </p>
+
+                                                    <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
+                                                    <span class="wpcf7-form-control-wrap your-company"><input type="hidden" name="service_name" id="service_name" value="{{$service[0]->service_name}}" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder=""></span><br>
+                                                    <span class="wpcf7-form-control-wrap your-company"><input type="text" required name="your_company" id="your_company" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Tên công ty"></span><br>
+                                                    <span class="wpcf7-form-control-wrap your-address"><input type="text" required name="your_address" id="your_address" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Địa chỉ"></span><br>
+                                                    <span class="wpcf7-form-control-wrap your-name"><input type="text" required name="your_name" id="your_name"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Người liên hệ"></span><br>
+                                                    <span class="wpcf7-form-control-wrap your-phone"><input type="tel" required name="your_phone" id="your_phone"  size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel form-control" aria-required="true" aria-invalid="false" placeholder="Điện thoại"></span><br>
+                                                    <span class="wpcf7-form-control-wrap your-email"><input type="email" required name="your_email" id="your_email"size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control" aria-required="true" aria-invalid="false" placeholder="Email"></span><br>
+{{--                                                    <span> <textarea name="description"  required  rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required form-control col-md-3" aria-required="true" aria-invalid="false" placeholder="Mô tả yêu cầu"></textarea></span>--}}
+                                                <span class="wpcf7-form-control-wrap mota-yeucau"><textarea id="description" name="mota-yeucau" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required form-control col-md-5" aria-required="true" aria-invalid="false" placeholder="Mô tả yêu cầu"></textarea></span>
                                                 <div class="clearfix"></div>
                                             </div>
-                                            @if(Session::has('success'))
-                                                <p class="alert alert-danger p-alert">{{Session::get('success')}}</p>
-                                            @endif
+
+                                                <p class="alert alert-success p-alert" style="display:none">Gửi yêu cầu thành công</p>
 
 
-                                            <p><input type="submit" value="Gửi" class="wpcf7-form-control wpcf7-submit btn btn-default"><img class="ajax-loader" src="https://dcv.vn/wp-content/plugins/contact-form-7/images/ajax-loader.gif" alt="Đang gửi ..." style="visibility: hidden;"></p>
+
+                                            <button type="button" id="submitService" class="wpcf7-form-control wpcf7-submit btn btn-primary">Gửi</button>
                                             <div class="wpcf7-response-output wpcf7-display-none"></div>
                                             {{csrf_field()}}
                                         </form>
@@ -124,7 +125,59 @@
 
     </div>
 
-{{--    @include('bottombar')--}}
+
+    <script>
+        $(document).ready(function (){
+            $('#submitService').click(function (){
+                var c_name = $("#your_name").val().trim();
+                var c_email = $("#your_email").val().trim();
+                var c_company = $("#your_company").val().trim();
+                var c_address = $("#your_address").val().trim();
+                var service_name = $("#service_name").val().trim();
+                var c_phone = $("#your_phone").val().trim();
+                var description = $('#description').val().trim();
+                var token = $("#csrf").val().trim();
+                if(c_name !== '' && c_email !== '' && c_phone !== '' && c_address !== '' && c_company !== '' && service_name !== '' && description !== ''){
+                    var  xhr = $.ajax({
+                        url: '/service/request',
+                        type: 'post',
+                        data:{
+                            _token: token,
+                            your_name:c_name,
+                            your_email:c_email,
+                            your_company:c_company,
+                            your_address:c_address,
+                            service_name:service_name,
+                            your_phone:c_phone,
+                            description: description
+
+
+                        },
+                        success: function (response){
+                            var result = JSON.parse(response);
+                            if(result.statusCode===200){
+                                $(".alert.alert-success.p-alert").css('display','block')
+
+
+                            }else{
+                                alert('Error occurred')
+                            }
+
+                        }
+
+                    })
+                    // console.log(xhr)
+
+                }else{
+                    alert('Vui lòng điền đủ thông tin')
+                }
+
+
+            })
+
+
+        })
+    </script>
 
 
 
