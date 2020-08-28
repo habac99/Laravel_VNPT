@@ -32,4 +32,13 @@
     opacity: 0;
     position: absolute;
 }
+.image-block:hover .optionButton {
+    transition-delay: 0.2s;
+    opacity: 0.9;
+    padding-top: 200px;
+}
+/*.optionButton {*/
+/*    opacity: 0;*/
+/*    position: absolute;*/
+/*}*/
 

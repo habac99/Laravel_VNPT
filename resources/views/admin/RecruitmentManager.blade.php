@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-    Products Manager
+    HR Manager
 @endsection
 @section('content')
     @include('admin.sidebar')
@@ -9,44 +9,59 @@
             @include('admin.topbar')
             <div class="container-fluid">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Products</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Tin Tuyển dụng</h1>
                     @if(Auth::User()->level ==2)
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_product_form" data-backdrop="static">
-                        Thêm mới
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_post_form" data-backdrop="static">
+                        Thêm
                     </button>
                     @endif
                 </div>
+                <div class="row" id="recruitment_row">
 
-                <div class="row" id="product_row">
+
                 </div>
                 @if(Auth::User()->level ==2)
-                <div id="add_product_form" class="modal fade" >
+                <div id="add_post_form" class="modal fade" >
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title">Add Product</h1>
+                                <h1 class="modal-title">Thêm Bài tuyển dụng</h1>
                             </div>
                             <div class="modal-body">
                                 <form enctype="multipart/form-data" role="form" name="form_upload" id="form_upload">
                                     <div class="form-group">
                                         <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}">
-                                        <label  for="product-name" class="label col-form-label-lg">Product name:</label>
-                                        <input required type="text" class="form-control" id="product-name" placeholder="Enter Name" name="name">
+                                        <label  for="job_name" class="label col-form-label-lg">Tên Công việc</label>
+                                        <input required type="text" class="form-control" id="job_name" placeholder="Nhập tên" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label  for="play-store-link" class="label col-form-label-lg">Play store link:</label>
-                                        <input required type="text" class="form-control" id="play-store-link" placeholder="Play store link:" name="name">
+                                        <label  for="job_type" class="label col-form-label-lg">Loại hình công việc</label>
+                                        <input required type="text" class="form-control" id="job_type" placeholder="toàn thời gian/bán thời gian" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label  for="app-store-link" class="label col-form-label-lg">Appstore link:</label>
-                                        <input required type="text" class="form-control" id="app-store-link" placeholder="Appstore link:" name="name">
+                                        <label  for="job_exp" class="label col-form-label-lg">Yêu Cầu Kinh Nghiệm</label>
+                                        <input required type="text" class="form-control" id="job_exp" placeholder="yêu cầu kinh nghiệm (năm)" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="short_description" class="label label-primary">Short Description:</label>
-                                        <textarea maxlength="150" required class="form-control" id="short_description" name="short_description"></textarea>
+                                        <label  for="salary" class="label col-form-label-lg">Mức Lương</label>
+                                        <input required type="text" class="form-control" id="salary" placeholder="lương ($)" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="FormControlFile" class="label label-primary">Logo</label>
+                                        <label for="job_description" class="label label-primary">Mô tả chi tiết:</label>
+                                        <textarea  required class="form-control" id="job_description" name="job_description"></textarea>
+                                    </div>
+                                    <script>
+                                        CKEDITOR.replace( 'job_description', {
+                                            filebrowserUploadUrl: "{{route('ckeditor', ['_token' => csrf_token() ])}}",
+                                            filebrowserUploadMethod: 'form'
+                                        });
+                                    </script>
+                                    <div class="form-group">
+                                        <label  for="job_expDate" class="label col-form-label-lg">Hết hạn vào</label>
+                                        <input required type="date" class="form-control" id="job_expDate" placeholder="hết hạn vào" name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="FormControlFile" class="label label-primary">Ảnh đại diện</label>
                                         <input required type="file" accept=".jpg,.jpeg,.png" class="form-control-file" id="fileUpload" name="fileUpload">
                                         <img width="200px" id="output_image"/>
                                     </div>
@@ -66,34 +81,45 @@
                     <div class="modal-dialog modal-dialog-scrollable modal-xl "  role="document" >
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title">Edit Product</h1>
+                                <h1 class="modal-title">Sửa bài viết</h1>
                             </div>
                             <div class="modal-body">
                                 <form enctype="multipart/form-data" role="form" name="form_edit" id="form_edit">
                                     <div class="form-group">
                                         <input type="hidden" name="_token" id="csrf" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="edit-product-id" id="edit-product-id" >
-                                        <label  for="edit_product-name" class="label col-form-label-lg">Product name:</label>
-                                        <input required type="text" class="form-control" id="edit-product-name" placeholder="Enter Name" name="name">
+                                        <input type="hidden" name="edit_post_id" id="edit_post_id" >
+                                        <label  for="edit_product-name" class="label col-form-label-lg">Tên công việc:</label>
+                                        <input required type="text" class="form-control" id="edit_job_name" name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label  for="edit-play-store-link" class="label col-form-label-lg">Play store link:</label>
-                                        <input required type="text" class="form-control" id="edit-play-store-link" placeholder="Play store link:" name="name">
+                                        <label  for="edit-play-store-link" class="label col-form-label-lg">Loại công việc:</label>
+                                        <input required type="text" class="form-control" id="edit_job_type"  name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label  for="edit-app-store-link" class="label col-form-label-lg">Appstore link:</label>
-                                        <input required type="text" class="form-control" id="edit-app-store-link" placeholder="Appstore link:" name="name">
+                                        <label  for="edit_job_exp" class="label col-form-label-lg">Yêu Cầu Kinh Nghiệm</label>
+                                        <input required type="text" class="form-control" id="edit_job_exp" placeholder="yêu cầu kinh nghiệm (năm)" name="name">
                                     </div>
-                                    {{--                                    <div class="form-group">--}}
-                                    {{--                                        <label  for="alt-name" class="label col-form-label-lg">Alt name:</label>--}}
-                                    {{--                                        <input required type="text" class="form-control" id="alt_name" placeholder="Enter Alt Name (Eg: dich-vu-it)" name="name">--}}
-                                    {{--                                    </div>--}}
+
                                     <div class="form-group">
-                                        <label for="edit-short_description" class="label label-primary">Short Description:</label>
-                                        <textarea maxlength="150" required class="form-control" id="edit-short-description" name="edit-short-description"></textarea>
+                                        <label  for="edit_salary label col-form-label-lg">Mức Lương:</label>
+                                        <input required type="text" class="form-control" id="edit_salary"  name="name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="FormControlFile" class="label label-primary">Logo</label>
+                                        <label  for="edit_job_expDate" class="label col-form-label-lg">Hết hạn vào</label>
+                                        <input required type="date" class="form-control" id="edit_job_expDate"  name="name">
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="edit_job_description" class="label label-primary">Chi tiết công việc:</label>
+                                        <textarea required class="form-control" id="edit_job_description" name="edit_job_description"></textarea>
+                                    </div>
+                                    <script>
+                                        CKEDITOR.replace( 'edit_job_description', {
+                                            filebrowserUploadUrl: "{{route('ckeditor', ['_token' => csrf_token() ])}}",
+                                            filebrowserUploadMethod: 'form'
+                                        });
+                                    </script>
+                                    <div class="form-group">
+                                        <label for="FormControlFile" class="label label-primary">Ảnh đại diện</label>
                                         <input required type="file" accept=".jpg,.jpeg,.png" class="form-control-file" id="edit_fileUpload" name="edit_fileUpload">
                                         <img width="200px" id="edit_output_image"/>
                                     </div>
@@ -126,45 +152,27 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
     <script>
         var flagsUrl = '{{ URL::asset('') }}';
         $(document).ready(function (){
-            getAllProduct();
+            getAllRecruitmentPost();
             $("#btn-upload").click(function () {
-                addProduct(this);
-                getAllProduct()
+                addRecruitPost();
+                getAllRecruitmentPost();
+
             })
-            $(".btn.btn-secondary.btn_dismiss").click(function (){
-
-
-                $('p[name="alert_success"]').css("display", "none");
-                $('#output_image').removeAttr('src');
-                $('#form_upload')[0].reset();
-
+            $(".btn.btn-danger.btn_delete").click(function (){
+                deleteRecruitPost(this);
+                getAllRecruitmentPost();
 
             })
             $("#btn-edit").click(function (){
-
-                editProduct(this);
-                getAllProduct()
+                editRecruitPost();
+                getAllRecruitmentPost();
             })
-            $(".btn.btn-danger.btn_delete").click(function (){
-
-                removeProduct(this);
-                getAllProduct();
-            })
-
         })
-
     </script>
-
-
-
-
-
 @endsection

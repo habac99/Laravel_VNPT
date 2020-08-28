@@ -92,7 +92,7 @@ function fetchAll() {
             })
 
 
-            // setTimeout(fetchAll, 5000);
+
 
         }
     })
@@ -140,7 +140,7 @@ function load(button) {
             $("#edit_alt_name").val(response['service'][0].alt_name);
             // $("#edit_full_description").val(response['service'][0].full_description);
             CKEDITOR.instances['edit_full_description'].setData(response['service'][0].full_description);
-            $("#edit_output_image").attr('src',response['service'][0].logo);
+            $("#edit_output_image").attr('src',flagsUrl+response['service'][0].logo);
 
         }
 
@@ -226,7 +226,7 @@ function editService(){
     }
 
 }
-function uploadService(button){
+function uploadService(){
     var service_id = $('input[name="service_id"]:checked').val().trim();
     var service_name = $('#service-name').val().trim();
     var short_description = $('#short_description').val().trim();
@@ -242,7 +242,7 @@ function uploadService(button){
 
     // console.log(service_name, service_id, short_description, full_description, $("#csrf").val());
     console.log(form_data);
-    if (service_id != null && service_name != null && short_description != null && full_description != null) {
+    if (service_id.length !== 0 && service_name.length !== 0 && short_description.length !== 0 && full_description.length !== 0) {
         var xhr = $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -347,7 +347,7 @@ function addProduct(){
     // console.log(form_data);
     // console.log(product_name, play_store, app_store, short_description, $("#csrf").val());
     // console.log(form_data);
-    if (product_name != null && play_store != null && short_description != null && app_store != null) {
+    if (product_name.length !== 0 && play_store.length !== 0 && short_description.length !== 0 && app_store.length !== 0) {
         var xhr = $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -367,7 +367,7 @@ function addProduct(){
 
 
                 } else if (dataResult.statusCode === 201) {
-                    alert("Image missing !");
+                    alert("Có lỗi xảy ra, vui lòng thử lại!");
                 }
 
             }
@@ -418,7 +418,7 @@ function loadOneProduct(button){
             $("#edit-product-id").val(response['products'][0].id)
             $('#edit-app-store-link').val(response['products'][0].apple_link);
             $('#edit-play-store-link').val(response['products'][0].google_link);
-            $("#edit_output_image").attr('src',response['products'][0].logo);
+            $("#edit_output_image").attr('src',flagsUrl+response['products'][0].logo);
 
 
         }
@@ -523,5 +523,204 @@ function refetch(page_number){
 
     })
     console.log(xhr);
+
+}
+function getAllRecruitmentPost(){
+    var xhr = $.ajax({
+        url:'/admin/recruitment-post-json',
+        type: 'get',
+        dataType: 'json',
+        success: function (response){
+            var len = 0;
+            $('#recruitment_row').empty();
+            if (response['RecruitmentPost'] != null) {
+                len = response['RecruitmentPost'].length;
+            }
+            if(len > 0){
+                for(var i =0;i<len;i++){
+                    var id = response['RecruitmentPost'][i].id;
+                    var job_name = response['RecruitmentPost'][i].job_name;
+                    var type = response['RecruitmentPost'][i].type;
+                    var salary = response['RecruitmentPost'][i].salary;
+                    var exp= response['RecruitmentPost'][i].experience;
+                    var expire_on= response['RecruitmentPost'][i].expire_on;
+                    var image = response['RecruitmentPost'][i].image;
+                    var details = response['RecruitmentPost'][i].details;
+                    var column = "<div class=\"col-xl-3 col-md-6 mb-3 newsItem tdItem\">"
+                        +          "<div>" +"<a href=\"#\"><img width=\"100%\"" + "src=" +'"' +  flagsUrl +image + '"' + "class=\"attachment-tintuc size-tintuc wp-post-image\"></a>" + "</div>"
+                        +           "<div class=\"newsTitle\">"
+                        +               "<a href=" +"#" +">" + job_name + "</a>"
+                        +           "</div>"
+                        +           "<div class=\"tuyendungIndicator\">"
+                        +               "<p><i class=\"fa fa-bookmark\" aria-hidden=\"true\"></i>Loại hình: <b>" + type + "</b></p>"
+                        +               "<p><i class=\"fas fa-dollar-sign\" aria-hidden=\"true\"></i>Mức lương: <b>" + salary + "$"+ "</b></p>"
+                        +               "<p><i class=\"fa fa-tasks\" aria-hidden=\"true\"></i>Yêu cầu kinh nghiệm: <b>&gt;" + exp + "Năm" +"</b></p>"
+                        +               "<p></p>"
+                        +               "<p><i class=\"fas fa-calendar\" aria-hidden=\"true\"></i>Hạn nộp hồ sơ:"
+                        +               "<b><span id=\"dnn_ctr551_Main_DanhSachTuyenDung_rptObject_lblHan_5\" style=\"color:#ff0000;\">" +expire_on + "</span></b>"
+                        +               "</p>"
+                        +           "</div>"
+                        +           "<div class=\"row\">"
+                        +           "<div class=\"col d-flex \">"
+                        +               "<button class=\"btn btn-primary btn-update\" data-toggle='modal' data-target='#edit_form' data-backdrop='static' " + "id='" + i + "'" + " style=\"margin-right: 50px; margin-top: 5px\">"+ "Sửa" + "</button>"
+                        +                   "<button class=\"btn btn-danger btn-remove\" data-toggle='modal' data-target='#delete_warning' data-backdrop='static' " + "id='" + id + "'" + "style=\"margin-left: 95px; margin-top: 5px\">" + "Xoá" + "</button>"
+                        +               "</div>"
+                        +           "</div>"
+                        +        "</div>" ;
+                    $("#recruitment_row").append(column)
+                }
+                $(".btn.btn-danger.btn-remove").click(function (){
+                    console.log(this.id);
+                    $(".btn.btn-danger.btn_delete").attr('id',this.id);
+                })
+                $(".btn.btn-primary.btn-update").click(function (){
+                    loadOneRecruitPost(response['RecruitmentPost'][this.id]);
+                })
+
+            }
+
+
+        }
+    })
+    // console.log(xhr)
+}
+function loadOneRecruitPost(data){
+
+    $("#edit_job_name").val(data.job_name)
+    $("#edit_job_type").val(data.type);
+    $("#edit_job_exp").val(data.experience);
+    $("#edit_salary").val(data.salary);
+    $("#edit_post_id").val(data.id);
+
+    CKEDITOR.instances['edit_job_description'].setData(data.details);
+    var date = new Date(data.expire_on)
+    console.log(date);
+
+    var day = ("0" + date.getDate()).slice(-2);
+    var month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+    var today =date.getFullYear()+"-"+(month)+"-"+(day);
+    $("#edit_job_expDate").val(today);
+    console.log(today);
+    $("#edit_output_image").attr('src',flagsUrl + data.image);
+
+}
+function addRecruitPost(){
+
+    var job_name = $("#job_name").val().trim();
+    var type = $("#job_type").val().trim();
+    var salary = $("#salary").val().trim();
+    var exp = $("#job_exp").val().trim();
+    var expire_on = $("#job_expDate").val();
+    var details = CKEDITOR.instances['job_description'].getData().trim();
+    var form = $('#form_upload')[0];
+    var form_data = new FormData(form);
+    form_data.append('job_name',job_name);
+    form_data.append('type', type);
+    form_data.append('salary', salary);
+    form_data.append('exp', exp);
+    form_data.append('expire_on', expire_on);
+    form_data.append('details', details);
+
+    console.log(expire_on)
+    if(job_name.length !== 0  && type.length !== 0 && salary.length !== 0 && exp.length !== 0 && expire_on.length !== 0 && details.length !== 0){
+        var xhr = $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            enctype: 'multipart/form-data',
+            url: '/admin/add/recruitPost',
+            type: 'post',
+            data:form_data,
+            processData: false,
+            contentType: false,
+            success: function (response){
+                var dataResult = JSON.parse(response);
+                if (dataResult.statusCode === 200) {
+                    $('p[name="alert_success"]').css("display", "block");
+                }else if (dataResult.statusCode === 201) {
+                    alert("Có lỗi xảy ra, vui lòng thử lại !");
+                }
+            }
+
+        })
+        console.log(xhr);
+    }else{
+        alert('Vui lòng điền đầy đủ thông tin')
+    }
+
+
+
+
+}
+function  deleteRecruitPost(button){
+    var id = parseInt(button.id);
+    var xhr = $.ajax({
+        url: '/admin/delete/recruitPost',
+        type: 'post',
+        data:{
+            _token:$("#csrf").val(),
+            id: id,
+        },
+        success: function (result){
+            var dataResult = JSON.parse(result);
+            if(dataResult.statusCode===200){
+                // window.location = "/admin/add/services";
+
+                alert('Xoá thành công');
+
+            }
+            else if(dataResult.statusCode===201){
+                alert("Error occured !");
+            }
+        }
+
+    })
+    console.log(xhr)
+}
+function editRecruitPost() {
+    var job_name = $("#edit_job_name").val().trim();
+    var type = $("#edit_job_type").val().trim();
+    var salary = $("#edit_salary").val().trim();
+    var exp = $("#edit_job_exp").val().trim();
+    var expire_on = $("#edit_job_expDate").val();
+    var details = CKEDITOR.instances['edit_job_description'].getData().trim();
+    var form = $('#form_upload')[0];
+    var form_data = new FormData(form);
+    var id = $("#edit_post_id").val();
+    form_data.append('id', id);
+    form_data.append('job_name',job_name);
+    form_data.append('type', type);
+    form_data.append('salary', salary);
+    form_data.append('exp', exp);
+    form_data.append('expire_on', expire_on);
+    form_data.append('details', details);
+    if(job_name.length !== 0 && type.length !== 0 && salary.length !== 0 && exp.length !== 0 && expire_on.length !== 0 && details.length !== 0){
+        var xhr = $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            enctype: 'multipart/form-data',
+            url: '/admin/edit/recruitPost',
+            type: 'post',
+            data:form_data,
+            processData: false,
+            contentType: false,
+            success: function (response){
+                var dataResult = JSON.parse(response);
+                if (dataResult.statusCode === 200) {
+                    $('p[name="alert_success_edit"]').css("display", "block");
+                }else if (dataResult.statusCode === 201) {
+                    alert("Có lỗi xảy ra, vui lòng thử lại !");
+                }
+            }
+
+        })
+        console.log(xhr);
+    }else{
+        alert('Vui lòng điền đầy đủ thông tin')
+    }
+
+
 
 }

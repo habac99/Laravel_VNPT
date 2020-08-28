@@ -12,15 +12,18 @@ class ServiceController extends Controller
     function getService(Request $request){
 
         $data['service'] = DB::table('sub_services')->where('alt_name','=',$request->name)->get();
+        if(count($data['service'])>0) {
+            if ($data['service'][0]->type == 0) {
 
-        if($data['service'][0]->type==0){
+                return view('one_service_with_request', $data);
+            } else if ($data['service'][0]->type == 1) {
 
-            return view('one_service_with_request',$data);
+                return view('one_service_no_request', $data);
+            }
+        }else{
+            return view('errors.404');
         }
-        else if($data['service'][0]->type == 1){
 
-            return view('one_service_no_request',$data);
-        }
 
 
     }

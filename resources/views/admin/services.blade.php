@@ -112,7 +112,7 @@
                                     <div class="form-group">
                                         <label for="email" class="label label-primary">Mô tả đầy đủ:</label>
                                         <textarea required class="form-control" id="edit_full_description" name="edit_full_description"></textarea>
-                                        <script src="/ckeditor/ckeditor.js"></script>
+
                                         <script>
                                             CKEDITOR.replace( 'edit_full_description', {
                                                 filebrowserUploadUrl: "{{route('ckeditor', ['_token' => csrf_token() ])}}",
@@ -206,7 +206,7 @@
 
             })
             $("#btn-upload").click(function () {
-                uploadService(this);
+                uploadService();
 
             })
             // $("#page-item.page-1").addClass('active');

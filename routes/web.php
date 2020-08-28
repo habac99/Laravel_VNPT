@@ -31,6 +31,11 @@ Route::group(['prefix'=>'services'],function (){
 
 
 });
+Route::group(['prefix'=>'tuyen-dung'], function(){
+    Route::get('/chinh-sach', 'RecruitmentController@policy')->name('chinh-sach');
+    Route::get('/tin-tuyen-dung', 'RecruitmentController@recruitmentPost')->name('tin-tuyen-dung');
+    Route::get('/tin-tuyen-dung/{job_name}','RecruitmentController@jobDetails' )->name('job_details');
+});
 
 Route::get('file','FileController@index');
 Route::post('file','Filecontroller@doUpload')->name('upload');
@@ -51,20 +56,25 @@ Route::group(['prefix'=>'admin','middleware'=>'checkLogout'], function(){
     Route::get('/services/refetch','AdminController@serviceRefetch')->name('ServiceRefetch');
     Route::get('/products', 'AdminController@getProduct')->name('AdminGetProduct');
     Route::get('/productJson', 'ProductController@productJson')->name('GetProductJson');
+    Route::get('/recruitment-post', 'RecruitmentController@Index')->name('recruit-manager');
+    Route::get('/recruitment-post-json','RecruitmentController@getAll')->name('allRecruitmentPost');
     Route::group(['prefix'=>'add'], function(){
         Route::post('/services', 'AdminController@addService');
         Route::post('/product', 'ProductController@addProduct');
+        Route::post('/recruitPost','RecruitmentController@addNew');
 
     });
-    Route::group(['prefix'=>'edit'], function(){
+     Route::group(['prefix'=>'edit'], function(){
         Route::get('service','AdminController@getOneService')->name('getOneService');
         Route::post('/service','AdminController@editService')->name('editService');
         Route::get('/product','ProductController@getOneProduct');
         Route::post('/product','ProductController@saveEditProduct');
+        Route::post('/recruitPost','RecruitmentController@editPost' );
     });
     Route::group(['prefix'=>'delete'], function(){
         Route::post('service', 'AdminController@removeService')->name('removeService');
         Route::post('product', 'ProductController@removeProduct')->name('removeService');
+        Route::post('/recruitPost',"RecruitmentController@removePost");
 
     });
     Route::group(['prefix'=>'view'], function(){

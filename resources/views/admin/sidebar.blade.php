@@ -37,7 +37,7 @@
                 <h6 class="collapse-header">Manage</h6>
                 <a class="collapse-item" href="{{route('getService')}}">Dịch vụ</a>
                 <a class="collapse-item" href="{{route('AdminGetProduct')}}">Sản Phẩm</a>
-{{--                <a class="collapse-item" href="#">News</a>--}}
+                <a class="collapse-item" href="{{route('recruit-manager')}}">Tin Tuyển Dụng</a>
 {{--                <a class="collapse-item" href="#">Event</a>--}}
 {{--                <a class="collapse-item" href="#">Service Request</a>--}}
             </div>
