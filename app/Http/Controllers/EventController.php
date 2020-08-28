@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
-    //
+
     public function getAllEvent(){
         $data['events'] = DB::table('events')->paginate(4);
         return view('allEvent',$data);
