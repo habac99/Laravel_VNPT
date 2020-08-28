@@ -35,7 +35,7 @@
             <div class="col-lg">
                 <div class="a-service">
                     <div class="a-service-title">
-                        <a href="{{route('get_service',$feature_service->alt_name)}}">
+                        <a href="{{route('get_service',str_replace(' ','-',$feature_service->service_name))}}">
                            <img class="service-category" src="{{$feature_service->logo}}">
 
                             <span class="service-name">
@@ -47,7 +47,7 @@
 
                     </div>
                     <div style="margin-top: 10px" class="a-service-img">
-                        <a href="{{route('get_service',$feature_service->alt_name)}}"><img width="720" height="478" src="{{$feature_service->image_link}}" class="attachment-main-service size-main-service wp-post-image" alt="quytrinhbpo-01"></a>
+                        <a href="{{route('get_service',str_replace(' ','-',$feature_service->service_name))}}"><img width="720" height="478" src="{{$feature_service->image_link}}" class="attachment-main-service size-main-service wp-post-image" alt="quytrinhbpo-01"></a>
                     </div>
 
                 </div>
@@ -56,7 +56,7 @@
                     <p>{{$feature_service->short_description}}</p>
                     <p></p>
                 </div>
-                <a href="{{route('get_service',$feature_service->alt_name)}}" class="viewmore">
+                <a href="{{route('get_service',str_replace(' ','-',$feature_service->service_name))}}" class="viewmore">
                     Đọc thêm                <i class="fa fa-angle-double-right" aria-hidden="true" style="margin-left: 3px;">
                     </i>
                 </a>

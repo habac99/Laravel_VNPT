@@ -10,8 +10,8 @@ class ServiceController extends Controller
 {
 
     function getService(Request $request){
-
-        $data['service'] = DB::table('sub_services')->where('alt_name','=',$request->name)->get();
+        $name = str_replace('-',' ',$request->name);
+        $data['service'] = DB::table('sub_services')->where('service_name','=',$name)->get();
         if(count($data['service'])>0) {
             if ($data['service'][0]->type == 0) {
 
@@ -48,9 +48,15 @@ class ServiceController extends Controller
     }
     public function serviceType(Request $request){
         $data['id']= DB::table('services')->where('alt_name','=', $request->name)->get();
-        $data['services'] = DB::table('sub_services')->where('service_id','=', $data['id'][0]->id)->paginate(4);
+        if(count($data['id'])>0){
+            $data['services'] = DB::table('sub_services')->where('service_id','=', $data['id'][0]->id)->paginate(4);
 //        dd($data);
-        return view('serviceDetails',$data);
+
+            return view('serviceDetails',$data);
+        }else{
+            return view('errors.404');
+        }
+
 
     }
 }

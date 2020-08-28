@@ -8,8 +8,8 @@
 
     <div class="container">
         <div class="center" style="margin-top: 150px; margin-bottom: 30px; text-align: center">
-            <h1>Page not found!</h1>
-            <p>Sorry, but the page you were looking for could not be found.</p>
+            <h1>Không tìm thấy trang!</h1>
+            <p>Rất tiếc, chúng tôi không thể tìm thấy trang bạn truy cập</p>
         </div>
     </div>
 

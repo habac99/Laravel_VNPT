@@ -19,10 +19,10 @@
                 Dịch vụ
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/service/phai-cu-nhan-luc-cntt">Phái Cử Nhân Lực CNTT</a>
-                <a class="dropdown-item" href="/service/gia-cong-phan-mem">Gia Công Phần Mềm</a>
-                <a class="dropdown-item" href="{{route('service_type','it-support')}}">IT Support</a>
-                <a class="dropdown-item" href="/service/noi-dung-so">Nội Dung Số</a>
+                <a class="dropdown-item" href="{{route('get_service',"Phái-cử-nhân-lực-CNTT")}}">Phái Cử Nhân Lực CNTT</a>
+                <a class="dropdown-item" href="{{route('get_service',"Gia-Công-Phần-Mềm")}}">Gia Công Phần Mềm</a>
+                <a class="dropdown-item" href="{{route('service_type','it-support')}}" >IT Support</a>
+                <a class="dropdown-item" href="{{route('get_service',"Nội-dung-số")}}">Nội Dung Số</a>
                 <a class="dropdown-item" href="#">BPO-Thuê Ngoài Quy Trình Nghiệp Vụ</a>
             </div>
         </li>
@@ -41,8 +41,8 @@
                 Tuyển Dụng
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Chính Sách Nhân Sự</a>
-                <a class="dropdown-item" href="#">Thông Tin Tuyển Dụng</a>
+                <a class="dropdown-item" href="{{route('chinh-sach')}}">Chính Sách Nhân Sự</a>
+                <a class="dropdown-item" href="{{route('tin-tuyen-dung')}}">Thông Tin Tuyển Dụng</a>
 
 
             </div>
