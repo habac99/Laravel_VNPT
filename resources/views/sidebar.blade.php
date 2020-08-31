@@ -63,7 +63,7 @@
                         </a>
                     </div>
                     <div class="a-service-title">
-                        <a href="/service/noi-dung-so/">
+                        <a href="/service/Nội-dung-số/">
                             <img class="service-category" src="https://dcv.vn/wp-content/uploads/2016/11/noidungso.png">
                             <span class="service-name">
                     <!-- Hien thi tieu de -->
@@ -153,19 +153,19 @@
                         <div class="other-content">
                             <ul>
                                 <li>
-                                    <a href="/service/cho-thue-tong-dai-1900-1800/">
+                                    <a href="/service/Cho-thuê-tổng-đài-CSKH-1900-1800/">
                                         Cho thuê tổng đài CSKH 1900-1800                          </a>
                                 </li>
                                 <li>
-                                    <a href="/service/tu-van-thiet-ke-giam-sat-thi-cong-di-doi-cac-thong/">
+                                    <a href="/service/Tư-vấn,-thiết-kế,-thi-công,-di-dời-các-hệ-thống/">
                                         Tư vấn, thiết kế, thi công, di dời các hệ thống                          </a>
                                 </li>
                                 <li>
-                                    <a href="/service/tu-van-thiet-ke-thi-cong-mang-may-tinh-camera-ninh/">
+                                    <a href="/service/Tư-vấn,-thiết-kế,-thi-công-mạng-máy-tính/">
                                         Tư vấn, thiết kế, thi công mạng máy tính                          </a>
                                 </li>
                                 <li>
-                                    <a href="/service/dich-vu-it/">
+                                    <a href="/service/Bảo-trì-hạ-tầng-CNTT/">
                                         Bảo trì hạ tầng CNTT                          </a>
                                 </li>
                             </ul>

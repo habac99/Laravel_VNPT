@@ -16,7 +16,7 @@
                     <div class="wow slideInLeft  col-lg-6 col-md-6 col-sm-12 col-xs-12 animated" id="post-1170" style="visibility: visible; animation-name: slideInLeft;">
                         <div class="a-service">
                             <div class="a-service-title a1">
-                                <a href="{{route('get_service',$service->alt_name)}}">{{$service->service_name}}</a>
+                                <a href="{{route('get_service',str_replace(' ','-',$service->service_name))}}">{{$service->service_name}}</a>
                             </div>
                             <div class="a-service-img">
                                 <a href="#"><img width="720" height="391" src="{{asset($service->logo)}}" class="attachment-service size-service wp-post-image" alt="DCV cho thuê tổng đài 1900"></a>
