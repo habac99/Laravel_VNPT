@@ -153,19 +153,19 @@
                         <div class="other-content">
                             <ul>
                                 <li>
-                                    <a href="/service/Cho-thuê-tổng-đài-CSKH-1900-1800/">
+                                    <a href="{{route('get_service',str_replace(' ','-',"Cho thuê tổng đài CSKH 1900 1800"))}}">
                                         Cho thuê tổng đài CSKH 1900-1800                          </a>
                                 </li>
                                 <li>
-                                    <a href="/service/Tư-vấn,-thiết-kế,-thi-công,-di-dời-các-hệ-thống/">
+                                    <a href="{{route('get_service',str_replace(' ','-',"Tư vấn, thiết kế, thi công, di dời các hệ thống"))}}">
                                         Tư vấn, thiết kế, thi công, di dời các hệ thống                          </a>
                                 </li>
                                 <li>
-                                    <a href="/service/Tư-vấn,-thiết-kế,-thi-công-mạng-máy-tính/">
+                                    <a href="{{route('get_service',str_replace(' ','-',"Tư vấn, thiết kế, thi công mạng máy tính"))}}">
                                         Tư vấn, thiết kế, thi công mạng máy tính                          </a>
                                 </li>
                                 <li>
-                                    <a href="/service/Bảo-trì-hạ-tầng-CNTT/">
+                                    <a href="{{route('get_service',str_replace(' ','-',"Bảo trì hạ tầng CNTT"))}}">
                                         Bảo trì hạ tầng CNTT                          </a>
                                 </li>
                             </ul>
